@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock Paper Scissors - Console Only</title>
+    <script>
+        //The Computer's random choice between Rock, Paper, and Scissors
+        function computerPlay() {
+          const choice = ["Rock", "Paper", "Scissors"] //creating an array and assigning to variable "choice"
+          return choice[Math.floor(Math.random()*choice.length)] //using math methods and functions to randomly select an item in the array
+        }
+
+        //declaring computerSelection variable and assigning computerPlay function to it        
+        let computerSelection = computerPlay().toUpperCase();
+
+        //declaring playerSelection
+        let playerSelection;
+
+        //declaring counter and setting to 0
+        let counter = 0;
+
+        //a single round of Rock Paper Scissors, with every possible selection between computerSelection and playerSelection in it
+        function round(playerSelection, computerSelection) {
+          playerSelection = prompt("Choose Rock, Paper, or Scissors").toUpperCase(); //setting player selection to a prompt within each round
+
+          console.log(computerSelection);
+          
+          if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
+            counter++;
+            return "You win! Rock beats Scissors!";
+
+          } else if (playerSelection == "ROCK" && computerSelection == "PAPER") {
+            counter--;
+            return "You lose! Paper beats Rock!";
+
+          } else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
+            counter++;
+            return "You win! Paper beats Rock!";
+
+          } else if (playerSelection == "PAPER" && computerSelection == "SCISSORS") {
+            counter--;
+            return "You lose! Scissors beats Paper!";
+
+          } else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
+            counter++;
+            return "You win! Scissors beats Paper!";
+          
+          } else if (playerSelection == "SCISSORS" && computerSelection == "ROCK") {
+            counter--;
+            return "You lose! Rock beats Scissors!";
+          
+          } else {
+            return "It's a tie!" 
+          }
+        }
+      
+      //calling the round 5 times, then stating a winner based on the counter value at the end of the 5 rounds
+        function game() {
+          console.log(round(playerSelection, computerSelection));
+          console.log(round(playerSelection, computerSelection));
+          console.log(round(playerSelection, computerSelection));
+          console.log(round(playerSelection, computerSelection));
+          console.log(round(playerSelection, computerSelection));
+          if (counter >= 1) {
+            console.log("You won the 5-round match!");
+          }
+          else {
+            console.log("You lost the 5-round match!");
+          }
+        }
+
+        console.log(game());
+
+    </script>
+  </head>
+  <body>
+    <h1>Play Rock-Paper-Scissors in the console!</h1>
+  </body>
+</html>
